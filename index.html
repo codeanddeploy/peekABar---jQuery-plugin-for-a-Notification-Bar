@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Basic on TinyMCE with Custom Dialog Box</title>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="dist/js/jquery.peekabar.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="dist/css/jquery.peekabar.min.css">
+
+	<style type="text/css">
+		.custom-bar {
+			color: white;
+		}
+	</style>
+	<script>
+		$(document).ready(function() {
+			// Default
+			var defaultBar = new $.peekABar();
+			$('.btn-default-show').click(function () {
+			    $('.peek-a-bar').hide();
+			    defaultBar.show();
+			});
+
+			$('.btn-default-hide').click(function () {
+			    defaultBar.hide();
+			});
+
+			/**
+		   	* Autohide Bar
+		   	*/
+		  	var autohideBar = new $.peekABar({
+		    	autohide: true,
+		  	});
+
+		  	$('.btn-autohide-show').click(function () {
+			    $('.peek-a-bar').hide();
+			    autohideBar.show();
+			});
+
+		  	$('.btn-autohide-hide').click(function () {
+		    	autohideBar.hide();
+		  	});
+
+		  	/**
+		  	 * Custom bar
+		  	 */
+		  	var customBar = new $.peekABar({
+		        autohide: true,
+				backgroundColor: '#5892fc',
+				color: '#fff',
+				padding: '2em',
+				cssClass: 'custom-bar',
+				html: '<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Test message with custom bar style.'
+		    });
+
+		    $('.btn-custom-show').click(function() {
+		        $('.peek-a-bar').hide();
+		        customBar.show();
+		    });
+
+		    $('.btn-custom-hide').click(function() {
+		        customBar.hide();
+		    });
+		});
+	</script>
+</head>
+<body>
+	<div class="container" style="margin-top:250px; text-align:center">
+		<button class="btn btn-success btn-default-show">Default Bar</button>
+		<button class="btn btn-danger btn-default-hide">Hide the Default Bar</button>
+		<button class="btn btn-success btn-autohide-show">Auto Hide Bar</button>
+		<button class="btn btn-success btn-custom-show">Custom Bar</button>
+	</div>
+	
+</body>
+</html>
